@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TrabalhoFinalCinema.Models
 {
-    public class Filme
+    public class Salas
     {
     }
 }
