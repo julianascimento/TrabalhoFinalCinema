@@ -17,7 +17,7 @@ namespace TrabalhoFinalCinema.Controllers
                 Tipo = "pipoca",
                 Preco = 5.00
             };
-            return View();
+            return View(comida);
         }
     }
 }

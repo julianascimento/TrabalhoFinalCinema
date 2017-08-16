@@ -20,7 +20,7 @@ namespace TrabalhoFinalCinema.Controllers
                 Funcao = "Vendedor de ingressos",
                 Salario = 500.00
             };
-            return View();
+            return View(empregado);
         }
     }
 }

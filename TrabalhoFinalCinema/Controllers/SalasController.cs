@@ -16,7 +16,7 @@ namespace TrabalhoFinalCinema.Controllers
             {
                 Id = "A"
             };
-            return View();
+            return View(sala);
         }
     }
 }
