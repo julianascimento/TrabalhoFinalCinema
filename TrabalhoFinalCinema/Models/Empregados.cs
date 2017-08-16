@@ -11,6 +11,7 @@ namespace TrabalhoFinalCinema.Models
         public string Funcao { get; set; }
         public double Salario { get; set; }
         public int Idade { get; set; }
+        public string Aniversario { get; set; }
         public string CPF { get; set; }
     }
 }

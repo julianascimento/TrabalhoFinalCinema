@@ -14,7 +14,7 @@ namespace TrabalhoFinalCinema.Controllers
         {
             var comida = new Comidas()
             {
-                Tipo = "pipoca",
+                Tipo = "Pipoca",
                 Preco = 5.00
             };
             return View(comida);

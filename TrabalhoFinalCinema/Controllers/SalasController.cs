@@ -14,7 +14,10 @@ namespace TrabalhoFinalCinema.Controllers
         {
             var sala = new Salas()
             {
-                Id = "A"
+                Id = "A1",
+                TresD = "Sim",
+                CapacidadePessoas = 100
+
             };
             return View(sala);
         }

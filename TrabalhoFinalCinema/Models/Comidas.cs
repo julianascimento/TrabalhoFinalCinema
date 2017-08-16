@@ -9,5 +9,6 @@ namespace TrabalhoFinalCinema.Models
     {
         public string Tipo { get; set; }
         public double Preco { get; set; }
+
     }
 }

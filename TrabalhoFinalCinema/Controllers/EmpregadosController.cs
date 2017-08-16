@@ -16,6 +16,7 @@ namespace TrabalhoFinalCinema.Controllers
             {
                 Nome = "Paulo",
                 Idade = 22,
+                Aniversario = "24/02/1996",
                 CPF = "123.456.789-00",
                 Funcao = "Vendedor de ingressos",
                 Salario = 500.00
