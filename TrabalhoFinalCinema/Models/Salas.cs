@@ -7,5 +7,6 @@ namespace TrabalhoFinalCinema.Models
 {
     public class Salas
     {
+        public string Id { get; set; }
     }
 }
