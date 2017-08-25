@@ -1,0 +1,14 @@
+﻿@model TrabalhoFinalCinema.Models.Empregados
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Nome</h2>
+<ul>
+    <li>Idade: @Model.Idade</li>
+    <li>Aniversário: @Model.Aniversario</li>
+    <li>CPF: @Model.CPF</li>
+    <li>Função: @Model.Funcao</li>
+    <li>Salario: @Model.Salario</li>
+</ul>

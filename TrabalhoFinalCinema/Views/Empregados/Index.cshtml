@@ -1,0 +1,29 @@
+﻿@model TrabalhoFinalCinema.ViewModels.EmpregadoIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Empregados</h2>
+
+@if (@Model.Empregado.Count > 0)
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr><th>Empregado</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var empregado in Model.Empregado)
+            {
+                <tr><td>@Html.ActionLink(@empregado.Nome, "Details", new { empregado.Id })</td></tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não há nenhum empregado ainda.</p>
+}
+
+
+

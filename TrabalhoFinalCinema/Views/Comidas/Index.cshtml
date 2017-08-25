@@ -1,0 +1,26 @@
+﻿@model TrabalhoFinalCinema.ViewModels.ComidasIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Comidas</h2>
+
+@if (@Model.Comidas.Count > 0)
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr><th>Comida</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var comida in Model.Comidas)
+            {
+                <tr><td>@Html.ActionLink(@comida.Tipo, "Details", new { comida.Id })</td></tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não há nenhuma comida disponível ainda.</p>
+}

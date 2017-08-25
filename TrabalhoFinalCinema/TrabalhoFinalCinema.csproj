@@ -207,6 +207,10 @@
     <Compile Include="Models\Salas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ComidasIndexViewModel.cs" />
+    <Compile Include="ViewModels\EmpregadoIndexViewModel.cs" />
+    <Compile Include="ViewModels\FilmesIndexViewModel.cs" />
+    <Compile Include="ViewModels\SalasIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-flatly.css" />
@@ -273,10 +277,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Filmes\Filmes.cshtml" />
-    <Content Include="Views\Salas\Salas.cshtml" />
-    <Content Include="Views\Empregados\Empregados.cshtml" />
-    <Content Include="Views\Comidas\Comidas.cshtml" />
+    <Content Include="Views\Filmes\Index.cshtml" />
+    <Content Include="Views\Salas\Index.cshtml" />
+    <Content Include="Views\Empregados\Index.cshtml" />
+    <Content Include="Views\Comidas\Index.cshtml" />
+    <Content Include="Views\Empregados\Details.cshtml" />
+    <Content Include="Views\Comidas\Details.cshtml" />
+    <Content Include="Views\Filmes\Details.cshtml" />
+    <Content Include="Views\Salas\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

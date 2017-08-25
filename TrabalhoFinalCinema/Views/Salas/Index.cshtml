@@ -1,0 +1,28 @@
+﻿@model TrabalhoFinalCinema.ViewModels.SalasIndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Salas</h2>
+
+@if (@Model.Salas.Count > 0)
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr><th>Sala</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var sala in Model.Salas)
+            {
+                <tr><td>@Html.ActionLink(@sala.Nome, "Details", new { sala.Id })</td></tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não há nenhuma sala disponível ainda.</p>
+}
+
+

@@ -1,0 +1,14 @@
+﻿@model TrabalhoFinalCinema.Models.Filmes
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Nome</h2>
+<ul>
+    <li>Idade Mínima: @Model.IdadeMinima</li>
+    <li>Gênero: @Model.Genero</li>
+    <li>Duração: @Model.Duracao min</li>
+    <li>Horários: @Model.Horário</li>
+    <li>Linguagem: @Model.Linguagem</li>
+</ul>

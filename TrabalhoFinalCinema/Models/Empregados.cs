@@ -7,6 +7,7 @@ namespace TrabalhoFinalCinema.Models
 {
     public class Empregados
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Funcao { get; set; }
         public double Salario { get; set; }
