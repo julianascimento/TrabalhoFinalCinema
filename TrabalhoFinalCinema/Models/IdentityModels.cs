@@ -20,6 +20,10 @@ namespace TrabalhoFinalCinema.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Filmes> Filmes { get; set; }
+        public DbSet<Salas> Salas { get; set; }
+        public DbSet<Comidas> Comidas { get; set; }
+        public DbSet<Empregados> Empregados { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

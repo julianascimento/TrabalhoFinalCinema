@@ -1,4 +1,4 @@
-﻿@model TrabalhoFinalCinema.ViewModels.ComidasIndexViewModel
+﻿@model IEnumerable<TrabalhoFinalCinema.Models.Comidas>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,14 +6,14 @@
 
 <h2>Comidas</h2>
 
-@if (@Model.Comidas.Count > 0)
+@if (Model.Any())
 {
     <table class="table table-bordered table-hover">
         <thead>
             <tr><th>Comida</th></tr>
         </thead>
         <tbody>
-            @foreach (var comida in Model.Comidas)
+            @foreach (var comida in Model)
             {
                 <tr><td>@Html.ActionLink(@comida.Tipo, "Details", new { comida.Id })</td></tr>
             }
@@ -22,5 +22,5 @@
 }
 else
 {
-    <p>Não há nenhuma comida disponível ainda.</p>
+    <p>Não há nenhuma comida disponível no momento.</p>
 }

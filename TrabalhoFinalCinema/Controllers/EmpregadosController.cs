@@ -10,34 +10,34 @@ namespace TrabalhoFinalCinema.Controllers
 {
     public class EmpregadosController : Controller
     {
-        public List<Empregados> empregados = new List<Empregados>
+        private ApplicationDbContext _context;
+
+        public EmpregadosController()
         {
-            new Empregados {Nome = "John Smith", Id = 1, Funcao = "Vendedor", Idade = 22, Aniversario = "24/02/1996",
-            CPF = "123.456.789-00", Salario = 800.00},
-            new Empregados {Nome = "Mary Williams", Id = 2, Funcao = "Segurança", Idade = 20, Aniversario = "02/06/1997",
-            CPF = "987.654.321-00", Salario = 850.00}
-        };
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         public ActionResult Index()
         {
-            var viewModel = new EmpregadoIndexViewModel
-            {
-                Empregado = empregados
-            };
+            var empregados = _context.Empregados.ToList();
 
-            return View(viewModel);
+            return View(empregados);
         }
 
         public ActionResult Details(int id)
         {
-            if (empregados.Count < id)
+            var empregado = _context.Empregados.SingleOrDefault(e => e.Id == id);
+            if (empregado == null)
             {
                 return HttpNotFound();
             }
 
-            var e = empregados[id - 1];
-
-            return View(e);
+            return View(empregado);
         }
     }
 }

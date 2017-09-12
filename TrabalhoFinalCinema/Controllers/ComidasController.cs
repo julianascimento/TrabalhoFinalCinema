@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,45 +11,34 @@ namespace TrabalhoFinalCinema.Controllers
 {
     public class ComidasController : Controller
     {
+        private ApplicationDbContext _context;
 
-        public List<Comidas> comidas = new List<Comidas>
+        public ComidasController()
         {
-            new Comidas {Tipo = "Pipoca", Id = 1, Preco = 8},
-            new Comidas {Tipo = "Chips", Id = 2, Preco = 4}
-        };
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose (bool disposing)
+        {
+            _context.Dispose();
+        }
 
         // GET: Customers
         public ActionResult Index()
         {
-            var viewModel = new ComidasIndexViewModel
-            {
-                Comidas = comidas
-            };
+                var comidas = _context.Comidas.ToList();
 
-            return View(viewModel);
+            return View(comidas);
         }
 
         public ActionResult Details(int id)
         {
-            if (comidas.Count < id)
+            var comida = _context.Comidas.SingleOrDefault(c => c.Id == id);
+            if (comida == null)
             {
                 return HttpNotFound();
             }
-
-            var c = comidas[id - 1];
-
-            return View(c);
-
-            // GET: Comidas
-            /*public ActionResult Comidas()
-            {
-                var comida = new Comidas()
-                {
-                    Tipo = "Pipoca",
-                    Preco = 5.00
-                };
-                return View(comida);
-            }*/
+            return View(comida);
         }
     }
 }

@@ -10,47 +10,35 @@ namespace TrabalhoFinalCinema.Controllers
 {
     public class SalasController : Controller
     {
+        private ApplicationDbContext _context;
 
-        public List<Salas> salas = new List<Salas>
+        public SalasController()
         {
-            new Salas {Nome = "A", Id = 1, CapacidadePessoas = 150, TresD = "Não"},
-            new Salas {Nome = "B", Id = 2, CapacidadePessoas = 300, TresD = "Sim"}
-        };
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         // GET: Customers
         public ActionResult Index()
         {
-            var viewModel = new SalasIndexViewModel
-            {
-                Salas = salas
-            };
+            var salas = _context.Salas.ToList();
 
-            return View(viewModel);
+            return View(salas);
         }
 
         public ActionResult Details(int id)
         {
-            if (salas.Count < id)
+            var sala = _context.Salas.SingleOrDefault(s => s.Id == id);
+            if (sala == null)
             {
                 return HttpNotFound();
             }
 
-            var s = salas[id - 1];
-
-            return View(s);
-
-            // GET: Salas
-            /*public ActionResult Salas()
-            {
-                var sala = new Salas()
-                {
-                    Id = "A1",
-                    TresD = "Sim",
-                    CapacidadePessoas = 100
-
-                };
-                return View(sala);
-            }*/
+            return View(sala);
         }
     }
 }

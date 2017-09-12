@@ -10,44 +10,30 @@ namespace TrabalhoFinalCinema.Controllers
 {
     public class FilmesController : Controller
     {
-
-        public List<Filmes> filmes = new List<Filmes>
+        private ApplicationDbContext _context;
+        public FilmesController()
         {
-            new Filmes {Nome = "Mulher Maravilha", Id = 1, Genero = "Aventura, Ficção", IdadeMinima = "Livre", Duracao = 150, Horário = "15h, 18, 20h", Linguagem = "Legendado"},
-            new Filmes {Nome = "Capitão América", Id = 2, Genero = "Aventura, Ficção", IdadeMinima = "Livre", Duracao = 168, Horário = "13h30, 16h, 21h", Linguagem = "Legendado"}
-        };
-
+            _context = new ApplicationDbContext();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         public ActionResult Index()
         {
-            var viewModel = new FilmesIndexViewModel
-            {
-                Filmes = filmes
-            };
-
-            return View(viewModel);
+            var filmes = _context.Filmes.ToList();
+            return View(filmes);
         }
 
         public ActionResult Details(int id)
         {
-            if (filmes.Count < id)
+            var filme = _context.Filmes.SingleOrDefault(f => f.Id == id);
+            if (filme == null)
             {
                 return HttpNotFound();
             }
 
-            var f = filmes[id - 1];
-
-            return View(f);
-
-            /*// GET: Filmes
-            public ActionResult Filmes()
-            {
-                var filme = new Filmes()
-                {
-                    Id = 123,
-                    Nome = "Mulher Maravilha"
-                };
-                return View(filme);
-            }*/
+            return View(filme);
         }
     }
 }
