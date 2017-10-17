@@ -1,0 +1,21 @@
+﻿@model TrabalhoFinalCinema.ViewModels.ComidasIndexViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Comidas"))
+{
+    @Html.HiddenFor(m => m.Comida.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Comida.Tipo)
+        @Html.TextBoxFor(m => m.Comida.Tipo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Comida.Preco)
+        @Html.TextBoxFor(m => m.Comida.Preco, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

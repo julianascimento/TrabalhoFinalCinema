@@ -8,6 +8,20 @@ namespace TrabalhoFinalCinema.ViewModels
 {
     public class EmpregadoIndexViewModel
     {
-        public List <Empregados> Empregado { get; set; }
+        //public IEnumerable<MembershipType> MembershipTypes { get; set; }
+        public Empregados Empregado { get; set; }
+        public string Title
+        {
+            get
+            {
+                if (Empregado != null && Empregado.Id != 0)
+                {
+                    return "Editar Empregado";
+                }
+
+                return "Novo Empregado";
+            }
+        }
+        //public List <Empregados> Empregado { get; set; }
     }
 }

@@ -35,5 +35,49 @@ namespace TrabalhoFinalCinema.Controllers
 
             return View(filme);
         }
+    
+    public ActionResult New()
+    {
+        var viewModel = new FilmesIndexViewModel{ };
+
+        return View("FilmeForm", viewModel);
     }
+
+    [HttpPost] // só será acessada com POST
+    public ActionResult Save(Filmes filme) // recebemos um cliente
+    {
+
+        if (filme.Id == 0)
+        {
+            // armazena o cliente em memória
+            _context.Filmes.Add(filme);
+        }
+        else
+        {
+            var filmeNoBD = _context.Filmes.Single(c => c.Id == filme.Id);
+
+            filmeNoBD.Nome = filme.Nome;
+            filmeNoBD.Genero = filme.Genero;
+            filmeNoBD.IdadeMinima = filme.IdadeMinima;
+            filmeNoBD.Horario = filme.Horario;
+            filmeNoBD.Linguagem = filme.Linguagem;
+            filmeNoBD.Duracao = filme.Duracao;
+        }
+
+        // faz a persistência
+        _context.SaveChanges();
+        // Voltamos para a lista de clientes
+        return RedirectToAction("Index");
+    }
+
+    public ActionResult Edit(int id)
+    {
+        var filme = _context.Filmes.SingleOrDefault(f => f.Id == id);
+
+        if (filme == null)
+            return HttpNotFound();
+
+        return View("FilmeForm", filme);
+    }
+}
 }

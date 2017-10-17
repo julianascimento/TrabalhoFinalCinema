@@ -1,0 +1,48 @@
+﻿@model TrabalhoFinalCinema.ViewModels.EmpregadoIndexViewModel
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Save", "Empregados"))
+{
+    @Html.HiddenFor(m => m.Empregado.Id)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Empregado.Nome)
+        @Html.TextBoxFor(m => m.Empregado.Nome, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Empregado.Idade)
+        @Html.TextBoxFor(m => m.Empregado.Idade, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Empregado.Funcao)
+        @Html.TextBoxFor(m => m.Empregado.Funcao, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Empregado.Salario)
+        @Html.TextBoxFor(m => m.Empregado.Salario, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Empregado.Aniversario)
+        @Html.TextBoxFor(m => m.Empregado.Aniversario, "{0: dd/MM/yyyy }", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Empregado.CPF)
+        @Html.TextBoxFor(m => m.Empregado.CPF, new { @class = "form-control" })
+    </div>
+    /*<div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.Empregado.IsSubscribedToNewsletter) Assinar a NewsLetter
+        </label>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Empregado.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Empregado.MembershipTypeId,
+            new SelectList(Model.MembershipTypes, "Id", "Name"),
+            "Escolha", new { @class = "form-control" })
+    </div>*/
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+}

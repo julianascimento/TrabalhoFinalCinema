@@ -8,6 +8,17 @@ namespace TrabalhoFinalCinema.ViewModels
 {
     public class SalasIndexViewModel
     {
-        public List<Salas> Salas { get; set; }
+        public Salas Sala { get; set; }
+        public string Title
+        {
+            get
+            {
+                if(Sala !=null && Sala.Id != 0)
+                {
+                    return "Editar Sala";
+                }
+                return "Novo Empregado";
+            }
+        }
     }
 }

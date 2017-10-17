@@ -290,6 +290,10 @@
     <Content Include="Views\Comidas\Details.cshtml" />
     <Content Include="Views\Filmes\Details.cshtml" />
     <Content Include="Views\Salas\Details.cshtml" />
+    <Content Include="Views\Empregados\EmpregadoForm.cshtml" />
+    <Content Include="Views\Salas\SalaForm.cshtml" />
+    <Content Include="Views\Comidas\ComidaForm.cshtml" />
+    <Content Include="Views\Filmes\FilmeForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

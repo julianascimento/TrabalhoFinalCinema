@@ -40,5 +40,46 @@ namespace TrabalhoFinalCinema.Controllers
             }
             return View(comida);
         }
+    
+    public ActionResult New()
+    {
+        var viewModel = new ComidasIndexViewModel{ };
+
+        return View("ComidaForm", viewModel);
     }
+
+    [HttpPost] // só será acessada com POST
+    public ActionResult Save(Comidas comida) // recebemos um cliente
+    {
+
+        if (comida.Id == 0)
+        {
+            // armazena o cliente em memória
+            _context.Comidas.Add(comida);
+        }
+        else
+        {
+            var comidaNoBD = _context.Comidas.Single(c => c.Id == comida.Id);
+
+                comidaNoBD.Tipo = comida.Tipo;
+                comidaNoBD.Preco = comida.Preco;
+        }
+
+        // faz a persistência
+        _context.SaveChanges();
+        // Voltamos para a lista de clientes
+        return RedirectToAction("Index");
+    }
+
+    public ActionResult Edit(int id)
+    {
+        var comida = _context.Comidas.SingleOrDefault(c => c.Id == id);
+
+        if (comida == null)
+            return HttpNotFound();
+
+
+        return View("ComidaForm", comida);
+    }
+}
 }

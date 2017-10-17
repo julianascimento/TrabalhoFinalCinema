@@ -8,6 +8,17 @@ namespace TrabalhoFinalCinema.ViewModels
 {
     public class FilmesIndexViewModel
     {
-        public List <Filmes> Filmes { get; set; }
+        public Filmes Filme { get; set; }
+        public string Title
+        {
+            get
+            {
+                if (Filme != null && Filme.Id != 0)
+                {
+                    return "Editar Filme";
+                }
+                return "Novo Filme";
+            }
+        }
     }
 }

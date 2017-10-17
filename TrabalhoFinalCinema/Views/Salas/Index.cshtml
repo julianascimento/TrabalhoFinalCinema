@@ -8,6 +8,7 @@
 
 @if (Model.Any())
 {
+    <p>@Html.ActionLink("Novo Empregado","New", null, new{ @class = "btn btn-primary"})</p>
     <table class="table table-bordered table-hover">
         <thead>
             <tr><th>Sala</th></tr>
@@ -15,7 +16,10 @@
         <tbody>
             @foreach (var sala in Model)
             {
-                <tr><td>@Html.ActionLink(@sala.Nome, "Details", new { sala.Id })</td></tr>
+                <tr>
+                    <td>@Html.ActionLink(@sala.Nome, "Editar", new { sala.Id })</td>
+                    <td>@sala.Nome</td>
+                </tr>
             }
         </tbody>
     </table>
