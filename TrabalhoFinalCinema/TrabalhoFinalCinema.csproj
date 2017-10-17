@@ -202,6 +202,22 @@
     <Compile Include="Migrations\201709060006197_Migracao.Designer.cs">
       <DependentUpon>201709060006197_Migracao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710172140265_AlteracaoModelEmpregado.cs" />
+    <Compile Include="Migrations\201710172140265_AlteracaoModelEmpregado.Designer.cs">
+      <DependentUpon>201710172140265_AlteracaoModelEmpregado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710172155372_AlteracaoModelFilmes.cs" />
+    <Compile Include="Migrations\201710172155372_AlteracaoModelFilmes.Designer.cs">
+      <DependentUpon>201710172155372_AlteracaoModelFilmes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710172156221_AlteracaoModelSalas.cs" />
+    <Compile Include="Migrations\201710172156221_AlteracaoModelSalas.Designer.cs">
+      <DependentUpon>201710172156221_AlteracaoModelSalas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710172156538_AlteracaoModelComidas.cs" />
+    <Compile Include="Migrations\201710172156538_AlteracaoModelComidas.Designer.cs">
+      <DependentUpon>201710172156538_AlteracaoModelComidas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comidas.cs" />
@@ -316,6 +332,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201709060006197_Migracao.resx">
       <DependentUpon>201709060006197_Migracao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172140265_AlteracaoModelEmpregado.resx">
+      <DependentUpon>201710172140265_AlteracaoModelEmpregado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172155372_AlteracaoModelFilmes.resx">
+      <DependentUpon>201710172155372_AlteracaoModelFilmes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172156221_AlteracaoModelSalas.resx">
+      <DependentUpon>201710172156221_AlteracaoModelSalas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710172156538_AlteracaoModelComidas.resx">
+      <DependentUpon>201710172156538_AlteracaoModelComidas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

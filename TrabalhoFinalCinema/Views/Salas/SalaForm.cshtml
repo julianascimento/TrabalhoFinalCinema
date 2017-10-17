@@ -3,7 +3,7 @@
     ViewBag.Title = Model.Title;
 }
 
-<h2>ViewBag.Title</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm("Save", "Salas"))
 {
@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Sala.CapacidadePessoas)
-        @Html.TextBoxFor(m => m.Sala.CapacidadePessoas, "{0: dd/MM/yyyy }", new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Sala.CapacidadePessoas, new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Sala.TresD)

@@ -13,14 +13,26 @@
     </p>
     <table class="table table-bordered table-hover">
         <thead>
-            <tr><th>Empregado</th></tr>
+            <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Aniversário</th>
+            <th>Função</th>
+            <th>Salário</th>
+            <th>CPF</th>
+            
+            </tr>
         </thead>
         <tbody>
             @foreach (var empregado in Model)
             {
                 <tr>
                     <td>@Html.ActionLink(@empregado.Nome, "Editar", new { empregado.Id })</td>
-                    <td>@empregado.Nome</td>
+                    <td>@empregado.Idade</td>
+                    <td>@empregado.Aniversario</td>
+                    <td>@empregado.Funcao</td>
+                    <td>@empregado.Salario</td>
+                    <td>@empregado.CPF</td>
                 </tr>
             }
         </tbody>

@@ -45,7 +45,7 @@ namespace TrabalhoFinalCinema.Controllers
     {
         var viewModel = new SalasIndexViewModel{};
 
-        return View("SalasForm", viewModel);
+        return View("SalaForm", viewModel);
     }
 
     [HttpPost] // só será acessada com POST

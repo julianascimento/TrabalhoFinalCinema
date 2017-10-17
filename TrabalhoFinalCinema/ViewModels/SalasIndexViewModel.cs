@@ -17,7 +17,7 @@ namespace TrabalhoFinalCinema.ViewModels
                 {
                     return "Editar Sala";
                 }
-                return "Novo Empregado";
+                return "Nova Sala";
             }
         }
     }

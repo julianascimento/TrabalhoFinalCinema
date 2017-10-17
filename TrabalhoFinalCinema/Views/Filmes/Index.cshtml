@@ -7,20 +7,31 @@
 <h2>Filmes</h2>
 
 @if (Model.Any())
-{]
+{
     <p>
         @Html.ActionLink("Novo Filme","New", null, new { @class = "btn btn-primary"})
     </p>
     <table class="table table-bordered table-hover">
         <thead>
-            <tr><th>Filme</th></tr>
+            <tr>
+                <th>Filme</th>
+                <th>Gênero</th>
+                <th>Horários</th>
+                <th>Idade Mínima</th>
+                <th>Linguagem</th>
+                <th>Duração</th>
+            </tr>
         </thead>
         <tbody>
             @foreach (var filme in Model)
             {
                 <tr>
                     <td>@Html.ActionLink(@filme.Nome, "Editar", new { filme.Id })</td>
-                    <td>@filme.Nome</td>
+                    <td>@filme.Genero</td>
+                    <td>@filme.Horario</td>
+                    <td>@filme.IdadeMinima</td>
+                    <td>@filme.Linguagem</td>
+                    <td>@filme.Duracao</td>
                 </tr>
             }
         </tbody>
