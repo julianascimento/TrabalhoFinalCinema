@@ -11,7 +11,7 @@
     <p>
         @Html.ActionLink("Nova Comida", "New", null, new { @class = "btn btn-primary"})
     </p>
-    <table class="table table-bordered table-hover">
+    <table class="table table-condensed table-hover">
         <thead>
             <tr>
                 <th>Comida</th>
@@ -24,7 +24,7 @@
                 <tr>
                     <td>@Html.ActionLink(@comida.Tipo, "Details", new { comida.Id })</td>
                     <td>R$ @comida.Preco</td>
-                    <td><p>@Html.ActionLink("Editar", "Edit", new { comida.Id }, new { @class = "btn btn-primary"})</p></td>
+                    <td align="right"><p>@Html.ActionLink("Editar", "Edit", new { comida.Id }, new { @class = "btn btn-primary"})</p></td>
                 </tr>
             }
         </tbody>

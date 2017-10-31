@@ -44,7 +44,8 @@ namespace TrabalhoFinalCinema.Controllers
     }
 
     [HttpPost] // só será acessada com POST
-    public ActionResult Save(Filmes filme) // recebemos um cliente
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Filmes filme) // recebemos um cliente
     {
             if (!ModelState.IsValid)
             {

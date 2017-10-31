@@ -7,6 +7,7 @@
 
 @using (Html.BeginForm("Save", "Comidas"))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Comida.Id)
     <div class="form-group">
         @Html.LabelFor(m => m.Comida.Tipo)
@@ -20,4 +21,17 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            $.validator.methods.date = function (value, element) {
+                Globalize.culture("pt-BR");
+                return this.optional(element) || Globalize.parseDate(value) !== null;
+            }
+        })
+    </script>
 }

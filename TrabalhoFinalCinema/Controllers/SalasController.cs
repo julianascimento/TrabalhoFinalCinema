@@ -49,7 +49,8 @@ namespace TrabalhoFinalCinema.Controllers
     }
 
     [HttpPost] // só será acessada com POST
-    public ActionResult Save(Salas sala) // recebemos um cliente
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Salas sala) // recebemos um cliente
     {
             if (!ModelState.IsValid)
             {

@@ -9,7 +9,7 @@
 @if (Model.Any())
 {
     <p>@Html.ActionLink("Nova Sala","New", null, new{ @class = "btn btn-primary"})</p>
-    <table class="table table-bordered table-hover">
+    <table class="table table-condensed table-hover">
         <thead>
             <tr>
                 <th>Sala</th>
@@ -21,10 +21,10 @@
             @foreach (var sala in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(@sala.Nome, "etails", new { sala.Id })</td>
+                    <td>@Html.ActionLink(@sala.Nome, "Details", new { sala.Id })</td>
                     <td>@sala.CapacidadePessoas</td>
                     <td>@sala.TresD</td>
-                    <td><p>@Html.ActionLink("Editar", "Edit", new { sala.Id }, new { @class = "btn btn-primary" })</p></td>
+                    <td align="right"><p>@Html.ActionLink("Editar", "Edit", new { sala.Id }, new { @class = "btn btn-primary" })</p></td>
                 </tr>
             }
         </tbody>

@@ -11,7 +11,7 @@
     <p>
         @Html.ActionLink("Novo Empregado", "New", null, new { @class = "btn btn-primary" })
     </p>
-    <table class="table table-bordered table-hover">
+    <table class="table table-condensed table-hover">
         <thead>
             <tr>
             <th>Nome</th>
@@ -33,7 +33,7 @@
                     <td>@empregado.Funcao</td>
                     <td>R$ @empregado.Salario</td>
                     <td>@empregado.CPF</td>
-                    <td><p>@Html.ActionLink("Editar", "Edit", new { empregado.Id }, new { @class = "btn btn-primary" })</p></td>
+                    <td align="right"><p>@Html.ActionLink("Editar", "Edit", new { empregado.Id }, new { @class = "btn btn-primary" })</p></td>
                 </tr>
             }
         </tbody>

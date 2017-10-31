@@ -49,6 +49,7 @@ namespace TrabalhoFinalCinema.Controllers
         }
 
         [HttpPost] // só será acessada com POST
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Empregados empregado) // recebemos um cliente
         {
             if (!ModelState.IsValid)
