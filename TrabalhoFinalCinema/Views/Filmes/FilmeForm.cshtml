@@ -11,26 +11,32 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Filme.Nome)
         @Html.TextBoxFor(m => m.Filme.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Filme.Nome)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Filme.Genero)
         @Html.TextBoxFor(m => m.Filme.Genero, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Filme.Genero)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Filme.IdadeMinima)
         @Html.TextBoxFor(m => m.Filme.IdadeMinima, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Filme.IdadeMinima)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Filme.Horario)
         @Html.TextBoxFor(m => m.Filme.Horario, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Filme.Horario)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Filme.Linguagem)
         @Html.TextBoxFor(m => m.Filme.Linguagem, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Filme.Linguagem)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Filme.Duracao)
         @Html.TextBoxFor(m => m.Filme.Duracao, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Filme.Duracao)
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>

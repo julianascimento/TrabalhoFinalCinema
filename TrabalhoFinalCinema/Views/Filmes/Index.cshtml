@@ -11,7 +11,7 @@
     <p>
         @Html.ActionLink("Novo Filme","New", null, new { @class = "btn btn-primary"})
     </p>
-    <table class="table table-bordered table-hover">
+    <table class="table table-condensed table-hover">
         <thead>
             <tr>
                 <th>Filme</th>
@@ -26,12 +26,13 @@
             @foreach (var filme in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(@filme.Nome, "Editar", new { filme.Id })</td>
+                    <td>@Html.ActionLink(@filme.Nome, "Details", new { filme.Id })</td>
                     <td>@filme.Genero</td>
                     <td>@filme.Horario</td>
-                    <td>@filme.IdadeMinima</td>
+                    <td>@filme.IdadeMinima Anos</td>
                     <td>@filme.Linguagem</td>
-                    <td>@filme.Duracao</td>
+                    <td>@filme.Duracao min</td>
+                    <td><p>@Html.ActionLink("Editar","Edit", new { filme.Id }, new { @class = "btn btn-primary" })</p></td>
                 </tr>
             }
         </tbody>

@@ -11,26 +11,32 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Empregado.Nome)
         @Html.TextBoxFor(m => m.Empregado.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Empregado.Nome)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Empregado.Idade)
         @Html.TextBoxFor(m => m.Empregado.Idade, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Empregado.Idade)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Empregado.Funcao)
         @Html.TextBoxFor(m => m.Empregado.Funcao, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Empregado.Funcao)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Empregado.Salario)
         @Html.TextBoxFor(m => m.Empregado.Salario, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Empregado.Salario)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Empregado.Aniversario)
         @Html.TextBoxFor(m => m.Empregado.Aniversario, "{0: dd/MM/yyyy }", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Empregado.Aniversario)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Empregado.CPF)
         @Html.TextBoxFor(m => m.Empregado.CPF, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Empregado.CPF)
     </div>
     /*<div class="checkbox">
         <label>

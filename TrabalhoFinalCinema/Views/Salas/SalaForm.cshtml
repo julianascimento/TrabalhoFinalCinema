@@ -11,14 +11,17 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Sala.Nome)
         @Html.TextBoxFor(m => m.Sala.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Sala.Nome)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Sala.CapacidadePessoas)
         @Html.TextBoxFor(m => m.Sala.CapacidadePessoas, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Sala.CapacidadePessoas)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Sala.TresD)
         @Html.TextBoxFor(m=>m.Sala.TresD, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Sala.TresD)
     </div>
     
     <button type="submit" class="btn btn-primary">Salvar</button>

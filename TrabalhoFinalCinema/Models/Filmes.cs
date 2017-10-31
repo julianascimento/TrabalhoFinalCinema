@@ -12,14 +12,19 @@ namespace TrabalhoFinalCinema.Models
         [Required]
         [Display(Name = "Nome")]
         public string Nome { get; set; }
+        [Required]
         [Display(Name = "Gênero")]
         public string Genero { get; set; }
+        [Required]
         [Display(Name = "Idade Mínima")]
         public string IdadeMinima { get; set; }
+        [Required]
         [Display(Name = "Horário")]
         public string Horario { get; set; }
+        [Required]
         [Display(Name = "Linguagem")]
         public string Linguagem { get; set; }
+        [Required]
         [Display(Name = "Duração")]
         public int Duracao { get; set; }
     }

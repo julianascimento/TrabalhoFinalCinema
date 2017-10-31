@@ -46,8 +46,14 @@ namespace TrabalhoFinalCinema.Controllers
     [HttpPost] // só será acessada com POST
     public ActionResult Save(Filmes filme) // recebemos um cliente
     {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new FilmesIndexViewModel{ };
 
-        if (filme.Id == 0)
+                return View("FilmeForm", viewModel);
+            }
+
+            if (filme.Id == 0)
         {
             // armazena o cliente em memória
             _context.Filmes.Add(filme);

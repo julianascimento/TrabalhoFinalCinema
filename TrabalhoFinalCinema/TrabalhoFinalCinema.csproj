@@ -218,6 +218,26 @@
     <Compile Include="Migrations\201710172156538_AlteracaoModelComidas.Designer.cs">
       <DependentUpon>201710172156538_AlteracaoModelComidas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710302355350_AlteracaoValidacaoEmpregados.cs" />
+    <Compile Include="Migrations\201710302355350_AlteracaoValidacaoEmpregados.Designer.cs">
+      <DependentUpon>201710302355350_AlteracaoValidacaoEmpregados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710310002271_AlteracaoValidacaoFilmes.cs" />
+    <Compile Include="Migrations\201710310002271_AlteracaoValidacaoFilmes.Designer.cs">
+      <DependentUpon>201710310002271_AlteracaoValidacaoFilmes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710310019374_AlteracaoValidacaoSalas.cs" />
+    <Compile Include="Migrations\201710310019374_AlteracaoValidacaoSalas.Designer.cs">
+      <DependentUpon>201710310019374_AlteracaoValidacaoSalas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710310020550_AlteracaoValidacaoComidas.cs" />
+    <Compile Include="Migrations\201710310020550_AlteracaoValidacaoComidas.Designer.cs">
+      <DependentUpon>201710310020550_AlteracaoValidacaoComidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710310206239_AlteracaoValidacao.cs" />
+    <Compile Include="Migrations\201710310206239_AlteracaoValidacao.Designer.cs">
+      <DependentUpon>201710310206239_AlteracaoValidacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comidas.cs" />
@@ -225,6 +245,7 @@
     <Compile Include="Models\Filmes.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Min16Years.cs" />
     <Compile Include="Models\Salas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -344,6 +365,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710172156538_AlteracaoModelComidas.resx">
       <DependentUpon>201710172156538_AlteracaoModelComidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710302355350_AlteracaoValidacaoEmpregados.resx">
+      <DependentUpon>201710302355350_AlteracaoValidacaoEmpregados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710310002271_AlteracaoValidacaoFilmes.resx">
+      <DependentUpon>201710310002271_AlteracaoValidacaoFilmes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710310019374_AlteracaoValidacaoSalas.resx">
+      <DependentUpon>201710310019374_AlteracaoValidacaoSalas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710310020550_AlteracaoValidacaoComidas.resx">
+      <DependentUpon>201710310020550_AlteracaoValidacaoComidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710310206239_AlteracaoValidacao.resx">
+      <DependentUpon>201710310206239_AlteracaoValidacao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

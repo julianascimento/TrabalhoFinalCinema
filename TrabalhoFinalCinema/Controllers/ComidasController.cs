@@ -51,8 +51,14 @@ namespace TrabalhoFinalCinema.Controllers
     [HttpPost] // só será acessada com POST
     public ActionResult Save(Comidas comida) // recebemos um cliente
     {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ComidasIndexViewModel{ };
 
-        if (comida.Id == 0)
+                return View("ComidaForm", viewModel);
+            }
+
+            if (comida.Id == 0)
         {
             // armazena o cliente em memória
             _context.Comidas.Add(comida);
