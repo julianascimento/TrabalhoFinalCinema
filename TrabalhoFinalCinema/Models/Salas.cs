@@ -14,9 +14,9 @@ namespace TrabalhoFinalCinema.Models
         public int Id { get; set; }
         [Required]
         [Display(Name = "Capacidade de Pessoas")]
-        public int CapacidadePessoas { get; set; }
+        public int? CapacidadePessoas { get; set; }
         [Required]
         [Display(Name = "3D")]
-        public string TresD { get; set;}
+        public bool TresD { get; set;}
     }
 }

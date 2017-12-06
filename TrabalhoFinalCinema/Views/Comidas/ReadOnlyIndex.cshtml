@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TrabalhoFinalCinema.Models.Comidas>
+@{
+    ViewBag.Title = "ReadOnlyIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Comidas</h2>
+
+@if (!Model.Any())
+{
+    <p>Não temos nenhuma comida ainda.</p>
+}
+else
+{
+    <table id="comida" class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Comida</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var comida in Model)
+            {
+                <tr>
+                    <td>@comida.Tipo</td>
+                    <td>R$ @comida.Preco</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

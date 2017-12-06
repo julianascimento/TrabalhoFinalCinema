@@ -9,6 +9,7 @@ using TrabalhoFinalCinema.ViewModels;
 
 namespace TrabalhoFinalCinema.Controllers
 {
+    [Authorize]
     public class ComidasController : Controller
     {
         private ApplicationDbContext _context;
@@ -24,11 +25,13 @@ namespace TrabalhoFinalCinema.Controllers
         }
 
         // GET: Customers
+        [Authorize]
         public ActionResult Index()
         {
-                var comidas = _context.Comidas.ToList();
-
-            return View(comidas);
+            var comidas = _context.Comidas.ToList();
+            if (User.IsInRole("CanManage"))
+                return View(comidas);
+            return View("ReadOnlyIndex", comidas);
         }
 
         public ActionResult Details(int id)
@@ -40,23 +43,23 @@ namespace TrabalhoFinalCinema.Controllers
             }
             return View(comida);
         }
-    
-    public ActionResult New()
-    {
-        var viewModel = new ComidasIndexViewModel{ };
 
-        return View("ComidaForm", viewModel);
+        [Authorize(Roles = RoleName.CanManage)]
+        public ActionResult New()
+    {
+        var comida = new Comidas();
+
+        return View("ComidaForm", comida);
     }
 
-    [HttpPost] // só será acessada com POST
+        [HttpPost] // só será acessada com POST
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManage)]
         public ActionResult Save(Comidas comida) // recebemos um cliente
     {
             if (!ModelState.IsValid)
             {
-                var viewModel = new ComidasIndexViewModel{ };
-
-                return View("ComidaForm", viewModel);
+                return View("ComidaForm", comida);
             }
 
             if (comida.Id == 0)
@@ -78,7 +81,8 @@ namespace TrabalhoFinalCinema.Controllers
         return RedirectToAction("Index");
     }
 
-    public ActionResult Edit(int id)
+        [Authorize(Roles = RoleName.CanManage)]
+        public ActionResult Edit(int id)
     {
         var comida = _context.Comidas.SingleOrDefault(c => c.Id == id);
 
@@ -88,5 +92,19 @@ namespace TrabalhoFinalCinema.Controllers
 
         return View("ComidaForm", comida);
     }
-}
+
+        [Authorize(Roles = RoleName.CanManage)]
+        public ActionResult Delete(int id)
+        {
+            var comidas = _context.Comidas.SingleOrDefault(c => c.Id == id);
+
+            if (comidas == null)
+                return HttpNotFound();
+
+            _context.Comidas.Remove(comidas);
+            _context.SaveChanges();
+
+            return new HttpStatusCodeResult(200);
+        }
+    }
 }

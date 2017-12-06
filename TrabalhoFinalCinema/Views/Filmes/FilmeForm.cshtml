@@ -1,6 +1,6 @@
-﻿@model TrabalhoFinalCinema.ViewModels.FilmesIndexViewModel
+﻿@model TrabalhoFinalCinema.Models.Filmes
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title = Model.Id == 0 ? "Novo Filme" : "Editar Filme";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -8,36 +8,36 @@
 @using (Html.BeginForm("Save", "Filmes"))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.Filme.Id)
+    @Html.HiddenFor(m => m.Id)
     <div class="form-group">
-        @Html.LabelFor(m => m.Filme.Nome)
-        @Html.TextBoxFor(m => m.Filme.Nome, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Filme.Nome)
+        @Html.LabelFor(m => m.Nome)
+        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Nome)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Filme.Genero)
-        @Html.TextBoxFor(m => m.Filme.Genero, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Filme.Genero)
+        @Html.LabelFor(m => m.Genero)
+        @Html.TextBoxFor(m => m.Genero, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Genero)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Filme.IdadeMinima)
-        @Html.TextBoxFor(m => m.Filme.IdadeMinima, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Filme.IdadeMinima)
+        @Html.LabelFor(m => m.IdadeMinima)
+        @Html.TextBoxFor(m => m.IdadeMinima, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.IdadeMinima)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Filme.Horario)
-        @Html.TextBoxFor(m => m.Filme.Horario, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Filme.Horario)
+        @Html.LabelFor(m => m.Horario)
+        @Html.TextBoxFor(m => m.Horario, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Horario)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Filme.Linguagem)
-        @Html.TextBoxFor(m => m.Filme.Linguagem, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Filme.Linguagem)
+        @Html.LabelFor(m => m.Linguagem)
+        @Html.TextBoxFor(m => m.Linguagem, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Linguagem)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Filme.Duracao)
-        @Html.TextBoxFor(m => m.Filme.Duracao, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Filme.Duracao)
+        @Html.LabelFor(m => m.Duracao)
+        @Html.TextBoxFor(m => m.Duracao, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Duracao)
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>

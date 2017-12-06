@@ -8,6 +8,7 @@ using TrabalhoFinalCinema.ViewModels;
 
 namespace TrabalhoFinalCinema.Controllers
 {
+    [Authorize]
     public class FilmesController : Controller
     {
         private ApplicationDbContext _context;
@@ -19,10 +20,13 @@ namespace TrabalhoFinalCinema.Controllers
         {
             _context.Dispose();
         }
+        [Authorize]
         public ActionResult Index()
         {
             var filmes = _context.Filmes.ToList();
-            return View(filmes);
+            if (User.IsInRole("CanManage"))
+                return View(filmes);
+            return View("ReadOnlyIndex", filmes);
         }
 
         public ActionResult Details(int id)
@@ -35,16 +39,18 @@ namespace TrabalhoFinalCinema.Controllers
 
             return View(filme);
         }
-    
-    public ActionResult New()
-    {
-        var viewModel = new FilmesIndexViewModel{ };
 
-        return View("FilmeForm", viewModel);
+        [Authorize(Roles = RoleName.CanManage)]
+        public ActionResult New()
+    {
+        var filme = new Filmes{ };
+
+        return View("FilmeForm", filme);
     }
 
-    [HttpPost] // só será acessada com POST
+        [HttpPost] // só será acessada com POST
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManage)]
         public ActionResult Save(Filmes filme) // recebemos um cliente
     {
             if (!ModelState.IsValid)
@@ -77,7 +83,8 @@ namespace TrabalhoFinalCinema.Controllers
         return RedirectToAction("Index");
     }
 
-    public ActionResult Edit(int id)
+        [Authorize(Roles = RoleName.CanManage)]
+        public ActionResult Edit(int id)
     {
         var filme = _context.Filmes.SingleOrDefault(f => f.Id == id);
 
@@ -86,5 +93,20 @@ namespace TrabalhoFinalCinema.Controllers
 
         return View("FilmeForm", filme);
     }
-}
+
+
+        [Authorize(Roles = RoleName.CanManage)]
+        public ActionResult Delete(int id)
+        {
+            var filmes = _context.Filmes.SingleOrDefault(c => c.Id == id);
+
+            if (filmes == null)
+                return HttpNotFound();
+
+            _context.Filmes.Remove(filmes);
+            _context.SaveChanges();
+
+            return new HttpStatusCodeResult(200);
+        }
+    }
 }

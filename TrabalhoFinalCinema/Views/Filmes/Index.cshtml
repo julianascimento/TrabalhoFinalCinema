@@ -6,12 +6,13 @@
 
 <h2>Filmes</h2>
 
+<p>
+    @Html.ActionLink("Novo Filme", "New", null, new { @class = "btn btn-primary" })
+</p>
+
 @if (Model.Any())
 {
-    <p>
-        @Html.ActionLink("Novo Filme","New", null, new { @class = "btn btn-primary"})
-    </p>
-    <table class="table table-condensed table-hover">
+    <table id="filme" class="table table-condensed table-hover">
         <thead>
             <tr>
                 <th>Filme</th>
@@ -33,6 +34,7 @@
                     <td>@filme.Linguagem</td>
                     <td>@filme.Duracao min</td>
                     <td align="right"><p>@Html.ActionLink("Editar","Edit", new { filme.Id }, new { @class = "btn btn-primary" })</p></td>
+                    <td><button data-filme-id="@filme.Id" class="btn-link js-delete"> Remover </button></td>
                 </tr>
             }
         </tbody>
@@ -41,4 +43,29 @@
 else
 {
     <p>Não há nenhum filme disponível no momento.</p>
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#filme").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover este filme?",
+                        function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/filmes/delete/" + button.attr("data-filme-id"),
+                                    method: "GET",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
 }

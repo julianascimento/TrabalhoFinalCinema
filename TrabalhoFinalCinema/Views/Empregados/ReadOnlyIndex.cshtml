@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TrabalhoFinalCinema.Models.Empregados>
+@{
+    ViewBag.Title = "ReadOnlyIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Empregados</h2>
+
+@if (!Model.Any())
+{
+    <p>Não temos nenhum empregado ainda.</p>
+}
+else
+{
+    <table id="empregados" class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Empregado</th>
+                <th>Função</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empregados in Model)
+            {
+                <tr>
+                    <td>@empregados.Nome</td>
+                    <td>@empregados.Funcao</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

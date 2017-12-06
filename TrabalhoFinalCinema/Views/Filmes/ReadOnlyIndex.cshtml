@@ -1,0 +1,40 @@
+﻿@model IEnumerable<TrabalhoFinalCinema.Models.Filmes>
+@{
+    ViewBag.Title = "ReadOnlyIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Filmes</h2>
+
+@if (!Model.Any())
+{
+    <p>Não temos nenhum filme ainda.</p>
+}
+else
+{
+    <table id="filme" class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Filme</th>
+                <th>Gênero</th>
+                <th>Horários</th>
+                <th>Idade Mínima</th>
+                <th>Linguagem</th>
+                <th>Duração</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var filme in Model)
+            {
+                <tr>
+                    <td>@filme.Nome</td>
+                    <td>@filme.Genero</td>
+                    <td>@filme.Horario</td>
+                    <td>@filme.IdadeMinima Anos</td>
+                    <td>@filme.Linguagem</td>
+                    <td>@filme.Duracao min</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

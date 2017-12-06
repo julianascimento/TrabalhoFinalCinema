@@ -1,6 +1,6 @@
-﻿@model TrabalhoFinalCinema.ViewModels.EmpregadoIndexViewModel
+﻿@model TrabalhoFinalCinema.Models.Empregados
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title = Model.Id == 0 ? "Novo Empregado" : "Editar Empregado";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -8,48 +8,37 @@
 @using (Html.BeginForm("Save", "Empregados"))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.Empregado.Id)
+    @Html.HiddenFor(m => m.Id)
     <div class="form-group">
-        @Html.LabelFor(m => m.Empregado.Nome)
-        @Html.TextBoxFor(m => m.Empregado.Nome, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Empregado.Nome)
+        @Html.LabelFor(m => m.Nome)
+        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Nome)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Empregado.Idade)
-        @Html.TextBoxFor(m => m.Empregado.Idade, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Empregado.Idade)
+        @Html.LabelFor(m => m.Idade)
+        @Html.TextBoxFor(m => m.Idade, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Idade)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Empregado.Funcao)
-        @Html.TextBoxFor(m => m.Empregado.Funcao, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Empregado.Funcao)
+        @Html.LabelFor(m => m.Funcao)
+        @Html.TextBoxFor(m => m.Funcao, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Funcao)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Empregado.Salario)
-        @Html.TextBoxFor(m => m.Empregado.Salario, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Empregado.Salario)
+        @Html.LabelFor(m => m.Salario)
+        @Html.TextBoxFor(m => m.Salario, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Salario)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Empregado.Aniversario)
-        @Html.TextBoxFor(m => m.Empregado.Aniversario, "{0: dd/MM/yyyy }", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Empregado.Aniversario)
+        @Html.LabelFor(m => m.Aniversario)
+        @Html.TextBoxFor(m => m.Aniversario, "{0: dd/MM/yyyy }", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Aniversario)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Empregado.CPF)
-        @Html.TextBoxFor(m => m.Empregado.CPF, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Empregado.CPF)
+        @Html.LabelFor(m => m.CPF)
+        @Html.TextBoxFor(m => m.CPF, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CPF)
     </div>
-    /*<div class="checkbox">
-        <label>
-            @Html.CheckBoxFor(m => m.Empregado.IsSubscribedToNewsletter) Assinar a NewsLetter
-        </label>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Empregado.MembershipTypeId)
-        @Html.DropDownListFor(m => m.Empregado.MembershipTypeId,
-            new SelectList(Model.MembershipTypes, "Id", "Name"),
-            "Escolha", new { @class = "form-control" })
-    </div>*/
 
     <button type="submit" class="btn btn-primary">Salvar</button>
 }

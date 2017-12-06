@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -183,6 +184,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AsIsBundleOrderer.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -238,6 +240,22 @@
     <Compile Include="Migrations\201710310206239_AlteracaoValidacao.Designer.cs">
       <DependentUpon>201710310206239_AlteracaoValidacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711212331355_modelSalas.cs" />
+    <Compile Include="Migrations\201711212331355_modelSalas.Designer.cs">
+      <DependentUpon>201711212331355_modelSalas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712052148078_createUsers.cs" />
+    <Compile Include="Migrations\201712052148078_createUsers.Designer.cs">
+      <DependentUpon>201712052148078_createUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712052338209_LastChanges.cs" />
+    <Compile Include="Migrations\201712052338209_LastChanges.Designer.cs">
+      <DependentUpon>201712052338209_LastChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712052346338_ZeroAutomatico.cs" />
+    <Compile Include="Migrations\201712052346338_ZeroAutomatico.Designer.cs">
+      <DependentUpon>201712052346338_ZeroAutomatico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comidas.cs" />
@@ -246,6 +264,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Min16Years.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Salas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -269,6 +288,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -345,6 +366,10 @@
     <Content Include="Views\Salas\SalaForm.cshtml" />
     <Content Include="Views\Comidas\ComidaForm.cshtml" />
     <Content Include="Views\Filmes\FilmeForm.cshtml" />
+    <Content Include="Views\Empregados\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Comidas\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Filmes\ReadOnlyIndex.cshtml" />
+    <Content Include="Views\Salas\ReadOnlyIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -394,6 +419,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710310206239_AlteracaoValidacao.resx">
       <DependentUpon>201710310206239_AlteracaoValidacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711212331355_modelSalas.resx">
+      <DependentUpon>201711212331355_modelSalas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712052148078_createUsers.resx">
+      <DependentUpon>201712052148078_createUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712052338209_LastChanges.resx">
+      <DependentUpon>201712052338209_LastChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712052346338_ZeroAutomatico.resx">
+      <DependentUpon>201712052346338_ZeroAutomatico.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

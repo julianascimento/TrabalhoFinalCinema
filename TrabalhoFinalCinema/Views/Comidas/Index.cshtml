@@ -6,12 +6,13 @@
 
 <h2>Comidas</h2>
 
+<p>
+    @Html.ActionLink("Nova Comida", "New", null, new { @class = "btn btn-primary" })
+</p>
+
 @if (Model.Any())
 {
-    <p>
-        @Html.ActionLink("Nova Comida", "New", null, new { @class = "btn btn-primary"})
-    </p>
-    <table class="table table-condensed table-hover">
+    <table id="comida"class="table table-condensed table-hover">
         <thead>
             <tr>
                 <th>Comida</th>
@@ -25,6 +26,7 @@
                     <td>@Html.ActionLink(@comida.Tipo, "Details", new { comida.Id })</td>
                     <td>R$ @comida.Preco</td>
                     <td align="right"><p>@Html.ActionLink("Editar", "Edit", new { comida.Id }, new { @class = "btn btn-primary"})</p></td>
+                    <td><button data-comida-id="@comida.Id" class="btn-link js-delete"> Remover </button></td>
                 </tr>
             }
         </tbody>
@@ -33,4 +35,29 @@
 else
 {
     <p>Não há nenhuma comida disponível no momento.</p>
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#comida").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover esta comida?",
+                        function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/comidas/delete/" + button.attr("data-comida-id"),
+                                    method: "GET",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
 }

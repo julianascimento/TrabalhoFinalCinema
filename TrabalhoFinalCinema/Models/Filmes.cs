@@ -26,7 +26,7 @@ namespace TrabalhoFinalCinema.Models
         public string Linguagem { get; set; }
         [Required]
         [Display(Name = "Duração")]
-        public int Duracao { get; set; }
+        public int? Duracao { get; set; }
     }
 
 }

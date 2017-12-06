@@ -8,6 +8,7 @@ using TrabalhoFinalCinema.ViewModels;
 
 namespace TrabalhoFinalCinema.Controllers
 {
+    [Authorize]
     public class EmpregadosController : Controller
     {
         private ApplicationDbContext _context;
@@ -21,12 +22,13 @@ namespace TrabalhoFinalCinema.Controllers
         {
             _context.Dispose();
         }
-
+        [Authorize]
         public ActionResult Index()
         {
             var empregados = _context.Empregados.ToList();
-
-            return View(empregados);
+            if (User.IsInRole("CanManage"))
+                return View(empregados);
+            return View("ReadOnlyIndex", empregados);
         }
 
         public ActionResult Details(int id)
@@ -40,23 +42,23 @@ namespace TrabalhoFinalCinema.Controllers
             return View(empregado);
         }
 
-
+        [Authorize(Roles = RoleName.CanManage)]
         public ActionResult New()
         {
-            var viewModel = new EmpregadoIndexViewModel { };
+            var empregado = new Empregados { };
 
-            return View("EmpregadoForm", viewModel);
+            return View("EmpregadoForm", empregado);
         }
 
         [HttpPost] // só será acessada com POST
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManage)]
         public ActionResult Save(Empregados empregado) // recebemos um cliente
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new EmpregadoIndexViewModel{ };
-
-                return View("EmpregadoForm", viewModel);
+                
+                return View("EmpregadoForm", empregado);
             }
 
             if (empregado.Id == 0)
@@ -82,6 +84,7 @@ namespace TrabalhoFinalCinema.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = RoleName.CanManage)]
         public ActionResult Edit(int id)
         {
             var empregado = _context.Empregados.SingleOrDefault(c => c.Id == id);
@@ -91,6 +94,20 @@ namespace TrabalhoFinalCinema.Controllers
 
             return View("EmpregadoForm", empregado);
         }
-    
+
+        [Authorize(Roles = RoleName.CanManage)]
+        public ActionResult Delete(int id)
+        {
+            var empregados = _context.Empregados.SingleOrDefault(c => c.Id == id);
+
+            if (empregados == null)
+                return HttpNotFound();
+
+            _context.Empregados.Remove(empregados);
+            _context.SaveChanges();
+
+            return new HttpStatusCodeResult(200);
+        }
+
     }
 }

@@ -17,10 +17,10 @@ namespace TrabalhoFinalCinema.Models
         public string Funcao { get; set; }
         [Required]
         [Display(Name = "Salário")]
-        public double Salario { get; set; }
+        public double? Salario { get; set; }
         [Display(Name = "Idade")]
         [Min16Years]
-        public int Idade { get; set; }
+        public int? Idade { get; set; }
         [Required]
         [Display(Name = "Aniversário")]
         public string Aniversario { get; set; }

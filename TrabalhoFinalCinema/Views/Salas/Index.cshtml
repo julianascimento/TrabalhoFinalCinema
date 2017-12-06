@@ -6,10 +6,13 @@
 
 <h2>Salas</h2>
 
+<p>
+    @Html.ActionLink("Nova Sala", "New", null, new { @class = "btn btn-primary" })
+</p>
+
 @if (Model.Any())
 {
-    <p>@Html.ActionLink("Nova Sala","New", null, new{ @class = "btn btn-primary"})</p>
-    <table class="table table-condensed table-hover">
+    <table id="sala" class="table table-condensed table-hover">
         <thead>
             <tr>
                 <th>Sala</th>
@@ -25,6 +28,7 @@
                     <td>@sala.CapacidadePessoas</td>
                     <td>@sala.TresD</td>
                     <td align="right"><p>@Html.ActionLink("Editar", "Edit", new { sala.Id }, new { @class = "btn btn-primary" })</p></td>
+                    <td><button data-sala-id="@sala.Id" class="btn-link js-delete"> Remover </button></td>
                 </tr>
             }
         </tbody>
@@ -36,3 +40,26 @@ else
 }
 
 
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#sala").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover esta Sala?",
+                        function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/salas/delete/" + button.attr("data-sala-id"),
+                                    method: "GET",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}

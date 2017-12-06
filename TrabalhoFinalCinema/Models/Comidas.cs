@@ -14,7 +14,7 @@ namespace TrabalhoFinalCinema.Models
         public string Tipo { get; set; }
         [Required]
         [Display (Name = "Preço")]
-        public double Preco { get; set; }
+        public double? Preco { get; set; }
 
     }
 }

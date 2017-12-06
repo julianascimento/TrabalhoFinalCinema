@@ -1,6 +1,6 @@
-﻿@model TrabalhoFinalCinema.ViewModels.SalasIndexViewModel
+﻿@model TrabalhoFinalCinema.Models.Salas
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title = Model.Id == 0 ? "Nova Sala" : "Editar Sala";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -8,21 +8,21 @@
 @using (Html.BeginForm("Save", "Salas"))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.Sala.Id)
+    @Html.HiddenFor(m => m.Id)
     <div class="form-group">
-        @Html.LabelFor(m => m.Sala.Nome)
-        @Html.TextBoxFor(m => m.Sala.Nome, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Sala.Nome)
+        @Html.LabelFor(m => m.Nome)
+        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Nome)
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Sala.CapacidadePessoas)
-        @Html.TextBoxFor(m => m.Sala.CapacidadePessoas, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Sala.CapacidadePessoas)
+        @Html.LabelFor(m => m.CapacidadePessoas)
+        @Html.TextBoxFor(m => m.CapacidadePessoas, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CapacidadePessoas)
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Sala.TresD)
-        @Html.TextBoxFor(m=>m.Sala.TresD, new { @class = "form-control"})
-        @Html.ValidationMessageFor(m => m.Sala.TresD)
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.TresD) Sala 3D
+        </label>
     </div>
     
     <button type="submit" class="btn btn-primary">Salvar</button>

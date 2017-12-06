@@ -8,6 +8,7 @@ using TrabalhoFinalCinema.ViewModels;
 
 namespace TrabalhoFinalCinema.Controllers
 {
+    [Authorize]
     public class SalasController : Controller
     {
         private ApplicationDbContext _context;
@@ -23,11 +24,13 @@ namespace TrabalhoFinalCinema.Controllers
         }
 
         // GET: Customers
+        [Authorize]
         public ActionResult Index()
         {
             var salas = _context.Salas.ToList();
-
-            return View(salas);
+            if (User.IsInRole("CanManage"))
+                return View(salas);
+            return View("ReadOnlyIndex", salas);
         }
 
         public ActionResult Details(int id)
@@ -40,23 +43,24 @@ namespace TrabalhoFinalCinema.Controllers
 
             return View(sala);
         }
-    
-    public ActionResult New()
-    {
-        var viewModel = new SalasIndexViewModel{};
 
-        return View("SalaForm", viewModel);
-    }
+        [Authorize(Roles = RoleName.CanManage)]
+        public ActionResult New()
+        {
+            var sala = new Salas();
 
-    [HttpPost] // só será acessada com POST
+            return View("SalaForm", sala);
+        }
+
+        [HttpPost] // só será acessada com POST
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManage)]
         public ActionResult Save(Salas sala) // recebemos um cliente
     {
             if (!ModelState.IsValid)
             {
-                var viewModel = new SalasIndexViewModel{ };
-
-                return View("SalaForm", viewModel);
+                var viewModel = new SalasIndexViewModel { };
+                return View("SalaForm", sala);
             }
 
             if (sala.Id == 0)
@@ -79,14 +83,29 @@ namespace TrabalhoFinalCinema.Controllers
         return RedirectToAction("Index");
     }
 
-    public ActionResult Edit(int id)
-    {
-        var sala = _context.Salas.SingleOrDefault(c => c.Id == id);
+        [Authorize(Roles = RoleName.CanManage)]
+        public ActionResult Edit(int id)
+        {
+            var sala = _context.Salas.SingleOrDefault(c => c.Id == id);
 
-        if (sala == null)
-            return HttpNotFound();
+            if (sala == null)
+                return HttpNotFound();
 
-        return View("SalaForm", sala);
+            return View("SalaForm", sala);
+        }
+
+        [Authorize(Roles = RoleName.CanManage)]
+        public ActionResult Delete(int id)
+        {
+            var salas = _context.Salas.SingleOrDefault(c => c.Id == id);
+
+            if (salas == null)
+                return HttpNotFound();
+
+            _context.Salas.Remove(salas);
+            _context.SaveChanges();
+
+            return new HttpStatusCodeResult(200);
+        }
     }
-}
 }

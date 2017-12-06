@@ -6,12 +6,13 @@
 
 <h2>Empregados</h2>
 
+<p>
+    @Html.ActionLink("Novo Empregado", "New", null, new { @class = "btn btn-primary" })
+</p>
+
 @if (Model.Any())
 {
-    <p>
-        @Html.ActionLink("Novo Empregado", "New", null, new { @class = "btn btn-primary" })
-    </p>
-    <table class="table table-condensed table-hover">
+    <table id="empregados" class="table table-condensed table-hover">
         <thead>
             <tr>
             <th>Nome</th>
@@ -24,16 +25,17 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var empregado in Model)
+            @foreach (var empregados in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(@empregado.Nome, "Details", new { empregado.Id })</td>
-                    <td>@empregado.Idade Anos</td>
-                    <td>@empregado.Aniversario</td>
-                    <td>@empregado.Funcao</td>
-                    <td>R$ @empregado.Salario</td>
-                    <td>@empregado.CPF</td>
-                    <td align="right"><p>@Html.ActionLink("Editar", "Edit", new { empregado.Id }, new { @class = "btn btn-primary" })</p></td>
+                    <td>@Html.ActionLink(@empregados.Nome, "Details", new { empregados.Id })</td>
+                    <td>@empregados.Idade Anos</td>
+                    <td>@empregados.Aniversario</td>
+                    <td>@empregados.Funcao</td>
+                    <td>R$ @empregados.Salario</td>
+                    <td>@empregados.CPF</td>
+                    <td align="right"><p>@Html.ActionLink("Editar", "Edit", new { empregados.Id }, new { @class = "btn btn-primary" })</p></td>
+                    <td><button data-empregados-id="@empregados.Id" class="btn-link js-delete"> Remover </button></td>
                 </tr>
             }
         </tbody>
@@ -45,4 +47,28 @@ else
 }
 
 
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#empregados").on("click", ".js-delete",
+                function () {
+                    var button = $(this);
+                    bootbox.confirm("Tem certeza que quer remover este empregado?",
+                        function (result) {
+                            if (result) {
+                                $.ajax({
+                                    url: "/empregados/delete/" + button.attr("data-empregados-id"),
+                                    method: "GET",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                    }
+                                });
+                            }
+                        });
+                });
+        });
+    </script>
+}
 
